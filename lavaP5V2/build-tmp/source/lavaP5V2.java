@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.io.OutputStream; 
 import java.io.IOException; 
 
-public class lavaP5 extends PApplet {
+public class lavaP5V2 extends PApplet {
 
 // ==================================================
 // Lava in processing... in process
@@ -29,10 +29,8 @@ float [] blobSize;
 float [] angleX;
 float [] angleY;
 int amount=30;
-int mainColor ;
 public void setup(){
 	
-	mainColor = color(255,0,0);
 	blobPos = new PVector[amount];
 	blobSize = new float[amount];
 	angleX = new float[amount];
@@ -41,7 +39,7 @@ public void setup(){
 	blobs = createGraphics(displayWidth/4,displayHeight/4);
 	blobs.beginDraw();
 	blobs.background(0);
-	blobs.fill(mainColor);
+	blobs.fill(0,0,255);
 	blobs.noStroke();
 	// lloop to initialize positions and sizes of the single 'blobs'
 	for(int i = 0; i < amount; i ++){
@@ -65,7 +63,7 @@ public void draw(){
 	blurImg = blobsImg.copy();
 
 	fastBlur(blurImg,PApplet.parseInt(map(mouseX,1,width,1,95)));
-	fastContrast(blurImg,100, mainColor);
+	fastContrast(blurImg,100, color(0,0,100));
 	// upsize the image for better resolution lower performance
 	// blurImg.resize(width,height);
 	// apply final blur for antialiasing - between 1 to 5
@@ -83,7 +81,7 @@ public void draw(){
 public void animate(){
 	blobs.beginDraw();
 	blobs.background(0);
-	blobs.fill(mainColor);
+	blobs.fill(0,0,255);
 	blobs.noStroke();
 	
 	for(int i = 0; i < amount; i ++){
@@ -209,7 +207,7 @@ public void fastBlur(PImage img, int radius)
 }
   public void settings() { 	size(displayWidth,displayHeight,FX2D); }
   static public void main(String[] passedArgs) {
-    String[] appletArgs = new String[] { "lavaP5" };
+    String[] appletArgs = new String[] { "lavaP5V2" };
     if (passedArgs != null) {
       PApplet.main(concat(appletArgs, passedArgs));
     } else {

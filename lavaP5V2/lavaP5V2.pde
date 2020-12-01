@@ -13,10 +13,8 @@ float [] blobSize;
 float [] angleX;
 float [] angleY;
 int amount=30;
-color mainColor ;
 void setup(){
 	size(displayWidth,displayHeight,FX2D);
-	mainColor = color(255,0,0);
 	blobPos = new PVector[amount];
 	blobSize = new float[amount];
 	angleX = new float[amount];
@@ -25,7 +23,7 @@ void setup(){
 	blobs = createGraphics(displayWidth/4,displayHeight/4);
 	blobs.beginDraw();
 	blobs.background(0);
-	blobs.fill(mainColor);
+	blobs.fill(0,0,255);
 	blobs.noStroke();
 	// lloop to initialize positions and sizes of the single 'blobs'
 	for(int i = 0; i < amount; i ++){
@@ -49,7 +47,7 @@ void draw(){
 	blurImg = blobsImg.copy();
 
 	fastBlur(blurImg,int(map(mouseX,1,width,1,95)));
-	fastContrast(blurImg,100, mainColor);
+	fastContrast(blurImg,100, color(0,0,100));
 	// upsize the image for better resolution lower performance
 	// blurImg.resize(width,height);
 	// apply final blur for antialiasing - between 1 to 5
@@ -67,7 +65,7 @@ void draw(){
 void animate(){
 	blobs.beginDraw();
 	blobs.background(0);
-	blobs.fill(mainColor);
+	blobs.fill(0,0,255);
 	blobs.noStroke();
 	
 	for(int i = 0; i < amount; i ++){
